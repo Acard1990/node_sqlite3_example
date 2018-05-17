@@ -31,6 +31,23 @@ class ProjectRepository {
           [id]
         )
       }
+
+      getById(id) {
+        return this.dao.get(
+          `SELECT * FROM projects WHERE id = ?`,
+          [id])
+      }
+
+      getAll() {
+        return this.dao.all(`SELECT * FROM projects`)
+      }
+
+      getTasks(projectId) {
+        return this.dao.all(
+          `SELECT * FROM tasks WHERE projectId = ?`,
+          [projectId])
+      }
     
   }
 
+  module.exports = ProjectRepository;
